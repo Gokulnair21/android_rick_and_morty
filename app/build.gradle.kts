@@ -8,7 +8,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("com.apollographql.apollo3").version("3.7.3")
-
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 
 }
 
@@ -30,6 +31,8 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","BASE_URL","\"https://rickandmortyapi.com/graphql\"")
     }
 
     buildTypes {
@@ -51,6 +54,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig=true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = compose_version
@@ -76,7 +80,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
 
     //Navigation Component
-    // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -87,5 +90,17 @@ dependencies {
     //coil
     implementation("io.coil-kt:coil-compose:2.4.0")
 
+   // kapt ("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2")
 
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+
+
+
+}
+
+kapt {
+    correctErrorTypes = true
 }

@@ -1,4 +1,4 @@
-package com.example.android_graphql
+package com.example.android_graphql.feature.character.domain.entity
 
 data class CharacterEntity(
     val name: String,

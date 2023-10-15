@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.android_graphql.HomeFragment"
+        android:name="com.example.android_graphql.feature.character.presentation.character_list.CharacterListFragment"
         android:label="HomeFragment" />
 </navigation>

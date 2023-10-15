@@ -1,9 +1,5 @@
-package com.example.android_graphql
+package com.example.android_graphql.feature.character.presentation.character_list
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,45 +18,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.android_graphql.feature.character.domain.entity.CharacterEntity
+import com.example.android_graphql.R
+import com.example.android_graphql.base.BaseComposeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : Fragment() {
+@AndroidEntryPoint
+class CharacterListFragment : BaseComposeFragment() {
 
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: CharacterListViewModel by viewModels()
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent {
-                MainUI()
-            }
-        }
-    }
 
     @Composable
-    fun MainUI() {
+    override fun SetMainUI() {
         val characterList = viewModel.dataList.collectAsState()
         LazyColumn(modifier = Modifier.padding(horizontal = 10.dp)) {
+
+            item {
+                Text(text = "Character List")
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+
             items(characterList.value.size) {
                 CharacterCard(characterList.value[it])
             }
         }
     }
+
 
     @Composable
     fun CharacterCard(characterEntity: CharacterEntity) {
@@ -99,9 +90,5 @@ class HomeFragment : Fragment() {
         }
     }
 
-    @Preview(showSystemUi = true, showBackground = true)
-    @Composable
-    fun ShowPreview() {
 
-    }
 }
