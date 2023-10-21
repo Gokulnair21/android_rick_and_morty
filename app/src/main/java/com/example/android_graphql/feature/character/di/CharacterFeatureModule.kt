@@ -20,9 +20,9 @@ object CharacterFeatureModule {
         return CharacterListUseCase(characterRepository)
     }
 
-    @Provides
-    fun provideCharacterRepository(apolloClient: ApolloClient): CharacterRepositoryImpl {
-        return CharacterRepositoryImpl(apolloClient)
-    }
+//    @Provides
+//    fun provideCharacterRepository(apolloClient: ApolloClient): CharacterRepository {
+//        return CharacterRepositoryImpl(apolloClient)
+//    }
 
 }

@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class CharacterListViewModel @Inject constructor( val characterListUse: CharacterListUseCase) :
+class CharacterListViewModel @Inject constructor( private val characterListUse: CharacterListUseCase) :
     BaseViewModel() {
 
     private val TAG = "HomeViewModel"

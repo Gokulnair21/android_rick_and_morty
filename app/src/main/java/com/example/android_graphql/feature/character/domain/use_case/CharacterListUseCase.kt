@@ -5,7 +5,7 @@ import com.example.android_graphql.feature.character.domain.entity.CharacterEnti
 import com.example.android_graphql.feature.character.domain.repository.CharacterRepository
 import javax.inject.Inject
 
-class CharacterListUseCase @Inject constructor( val repository: CharacterRepository) :
+class CharacterListUseCase @Inject constructor(private val repository: CharacterRepository) :
     BaseUseCase<Unit, List<CharacterEntity>>() {
 
     override suspend fun execute(params: Unit): List<CharacterEntity> {

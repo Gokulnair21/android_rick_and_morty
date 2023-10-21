@@ -8,8 +8,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("com.apollographql.apollo3").version("3.7.3")
-    kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("kapt")
+
 
 }
 
@@ -78,6 +79,7 @@ dependencies {
     implementation("androidx.compose.material:material:$compose_version")
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
+    androidTestImplementation( "androidx.compose.ui:ui-tooling:$compose_version")
 
     //Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -93,8 +95,10 @@ dependencies {
    // kapt ("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2")
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
 
 

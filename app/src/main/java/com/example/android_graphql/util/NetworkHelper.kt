@@ -1,4 +1,4 @@
-package com.example.android_graphql
+package com.example.android_graphql.util
 
 import com.apollographql.apollo3.ApolloClient
 
